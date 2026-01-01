@@ -1,0 +1,31 @@
+version: "3.8"
+
+services:
+  mysql:
+    image: mariadb:10.11
+    container_name: mariadb-db
+    restart: always
+    environment:
+      MARIADB_DATABASE: springboot_db
+      MARIADB_ROOT_PASSWORD: password
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+
+  app:
+    build: .
+    container_name: springboot-app
+    restart: always
+    depends_on:
+      - mysql
+    environment:
+      DB_HOST: mysql
+      DB_USERNAME: root
+      DB_PASSWORD: password
+    ports:
+      - "8080:8080"
+
+volumes:
+  mysql-data:
