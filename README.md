@@ -1,115 +1,114 @@
-🚀 Spring Boot JWT Authentication with Docker
+# Spring Boot JWT Authentication – Secure Backend System
 
-A backend application built using Spring Boot that implements JWT-based authentication, role-based authorization, and is fully Dockerized with a relational database.
+##  Overview
+This project implements a **secure and scalable backend system** using **Spring Boot** with **JWT-based authentication** and **role-based authorization**. The application is fully containerized using Docker and designed to reflect a real-world production backend architecture.
 
-This project demonstrates a real-world backend architecture with security, persistence, and containerized deployment.
+The system ensures secure communication between clients and APIs while maintaining a clean separation of concerns.
 
-🛠️ Tech Stack
+---
 
-Java 21
-
-Spring Boot
-
-Spring Security (JWT)
-
-Spring Data JPA
-
-MariaDB (MySQL-compatible)
-
-Docker & Docker Compose
-
-Maven
-
-✨ Features
-
-User registration and login
-
-JWT-based authentication
-
-Role-based access control (USER / ADMIN)
-
-Secure REST endpoints using Spring Security
-
-RESTful APIs
-
-Database persistence using JPA
-
-Fully Dockerized application and database
-
-Data persistence across container restarts
-
-🏗️ Project Architecture
-
-The application follows a layered architecture for better separation of concerns:
-
-Controller Layer – Handles HTTP requests and responses
-
-Service Layer – Contains business logic
-
-Repository Layer – Manages database operations
-
-Security Layer – Handles authentication and authorization
-
-Database Layer – Stores user data
-
-🔐 JWT is used for stateless authentication, and role-based authorization is enforced at the API level.
+##  System Architecture
 
 
+###  Core Design Principles
+- Stateless authentication using JWT  
+- Layered architecture (Controller, Service, Repository)  
+- Role-based secure API access  
 
-🐳 How to Run the Project (Using Docker)
-Prerequisites
+---
 
-Docker Desktop installed and running
+## 🛠️ Tech Stack
+- Java 21  
+- Spring Boot  
+- Spring Security (JWT)  
+- Spring Data JPA  
+- MariaDB (MySQL-compatible)  
+- Docker & Docker Compose  
+- Maven  
 
-Steps
+---
 
-Clone or download the repository
+## ✨ Core Features
+- User registration and authentication  
+- JWT-based stateless authentication  
+- Role-based access control (**USER / ADMIN**)  
+- Secure REST API endpoints  
+- Database persistence using JPA  
+- Fully containerized backend and database  
+- Data persistence across container restarts  
 
-Navigate to the project root directory
+---
 
-Run the following command:
+## 🔐 Authentication Flow
+1. User registers or logs in  
+2. Server validates credentials  
+3. JWT token is generated  
+4. Client sends JWT in Authorization header  
+5. Server validates token for each request  
+6. Access granted based on user role  
 
+---
+
+## 📡 API Endpoints
+
+### Authentication APIs
+- `POST /auth/register` → Register a new user  
+- `POST /auth/login` → Authenticate user and receive JWT  
+
+### User APIs
+- `GET /users/me` → Get current user details (JWT required)  
+- `GET /users` → Accessible only by ADMIN users  
+
+---
+
+## 🔒 Security Implementation
+- JWT used for stateless authentication  
+- Passwords encrypted using BCrypt  
+- Role-based authorization enforced at API level  
+- Proper HTTP status codes for unauthorized access  
+
+---
+
+## 📂 Project Structure
+- **Controller Layer** → Handles HTTP requests  
+- **Service Layer** → Business logic implementation  
+- **Repository Layer** → Database operations  
+- **Security Layer** → Authentication & authorization  
+- **Database Layer** → Stores user data  
+
+---
+
+## 🔄 Request Flow
+1. Client sends request with JWT  
+2. Security layer validates token  
+3. Controller processes request  
+4. Service layer executes logic  
+5. Data stored/retrieved from database  
+6. Response returned to client  
+
+---
+
+## 🐳 Docker Setup
+
+### Prerequisites
+- Docker Desktop installed and running  
+
+### ▶️ Run the Application
 docker-compose up --build
-
-🌐 Application URL
-
-Once the containers are running, the application will be available at:
 
 http://localhost:8080
 
+ Testing
+Tested authentication and authorization flows
+Verified role-based access restrictions
+Validated secure API behavior using JWT
+📚 Key Learnings
+Implementing JWT authentication in Spring Boot
+Securing APIs using Spring Security
+Designing layered backend architecture
+Containerizing applications using Docker
+Managing database persistence with JPA
 
-✔ One command
-✔ Clean setup
-✔ Professional deployment
+🎯 Conclusion
 
-🔗 API Endpoints
-🔐 Authentication
-
-POST /auth/register
-Registers a new user
-
-POST /auth/login
-Authenticates the user and returns a JWT token
-
-👤 User APIs
-
-GET /users/me
-Returns details of the currently logged-in user
-(JWT required)
-
-GET /users
-Accessible only by ADMIN users
-
-🔒 Security
-
-JWT is used for authentication
-
-Passwords are encrypted using BCrypt
-
-Role-based access control is enforced
-
-Unauthorized access returns appropriate HTTP status codes
-
-✅ Final Note
-
-This project is designed to reflect real-world backend development practices, including security, clean architecture, and containerized deployment.
+This project demonstrates the development of a production-ready backend system with secure authentication, clean architecture, and containerized deployment, aligned with modern backend engineering practices.
